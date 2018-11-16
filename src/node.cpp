@@ -22,5 +22,5 @@ Node::Node(sf::Vector2f position, sf::Vector2f size) {
 
 void Node::computeIntensity(WaveSource wave_source) {
     unsigned int distance = distanceBetweenPoints(position, wave_source.getPosition());
-    intensity += (sin(((2*3.14*distance))/wave_source.getLength() + wave_source.getPhase()) * 128) + 128;
+    intensity += sin(((2*3.14*distance))/wave_source.getLength() + wave_source.getPhase()) * 255;
 }

@@ -45,9 +45,10 @@ void NodeMatrix::computeImage() {
         {
             sf::Vertex* quad = &vertices[(i + j * matrix.size()) * 4];
             double intensity = matrix[i][j].getIntensity();
+            double ajusted_intensity = intensity / max_intensity * 255.0f;
             Color color(
-                intensity / max_intensity * 255.0f,
-                0,
+                ajusted_intensity > 0 ?   ajusted_intensity : 0,
+                ajusted_intensity < 0 ? - ajusted_intensity : 0,
                 0
             );
 

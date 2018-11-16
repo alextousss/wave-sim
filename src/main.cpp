@@ -2,6 +2,7 @@
 #include <vector>
 #include <SFML/Graphics.hpp>
 #include <ctime>
+#include <fstream>
 
 #include "json/json.h"
 #include "node.hpp"
@@ -13,16 +14,21 @@ using namespace sf;
 
 
 
-
 int main() {
 
-    vector<Vector2f> sources ({
-        Vector2f(500, 500),
-        Vector2f(500, 510),
-        Vector2f(510, 500)
-    });
-    unsigned int wavelength = 20;
+    vector<Vector2f> sources;
 
+    Json::Value root;
+    ifstream file("sources.json");
+    file >> root;
+
+    unsigned int wavelength          = root["wavelength"].asFloat();
+    double delta_shift_per_iteration = root["delta_shift_per_iteration"].asFloat();
+
+    for(unsigned int i = 0 ; i < root["sources"].size() ; i++)
+    {
+        sources.push_back(Vector2f(root["sources"][i]["x"].asFloat(), root["sources"][i]["y"].asFloat()));
+    }
 
     sf::Vector2f window_size(1000, 1000);
     sf::Vector2f matrix_size = window_size;
@@ -34,7 +40,7 @@ int main() {
     double phase_shift_per_unit = -3.14;
     while (window.isOpen())
     {
-        phase_shift_per_unit += 0.2;
+        phase_shift_per_unit += delta_shift_per_iteration;
         cout << "phase: " << phase_shift_per_unit << "radians" << endl;
         sf::Event event;
         while (window.pollEvent(event))
