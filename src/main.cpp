@@ -19,7 +19,7 @@ int main() {
     vector<Vector2f> sources;
 
     Json::Value root;
-    ifstream file("sources.json");
+    ifstream file("parameters.json");
     file >> root;
 
     unsigned int wavelength          = root["wavelength"].asFloat();
@@ -31,9 +31,9 @@ int main() {
     }
 
     sf::Vector2f window_size(1000, 1000);
-    sf::Vector2f matrix_size = window_size;
+    sf::Vector2f matrix_size = Vector2f(1000, 1000);
 
-    NodeMatrix matrix(matrix_size, 1);
+    NodeMatrix matrix(matrix_size, root["compute_quantum"].asFloat());
 
 
     sf::RenderWindow window(sf::VideoMode(window_size.x, window_size.y), "Wave Sim");

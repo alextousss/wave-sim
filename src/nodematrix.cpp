@@ -4,7 +4,7 @@ using namespace sf;
 using namespace std;
 
 NodeMatrix::NodeMatrix(sf::Vector2f size, unsigned int quantum) {
-    matrix.resize(size.x, std::vector<Node>(size.y, Node(Vector2f(0,0), Vector2f(quantum, quantum))));
+    matrix.resize(size.x / quantum, std::vector<Node>(size.y / quantum, Node(Vector2f(0,0), Vector2f(quantum, quantum))));
     for(unsigned int i = 0 ; i < matrix.size() ; i++)
     {
         for(unsigned int j = 0 ; j < matrix[i].size() ; j++)
