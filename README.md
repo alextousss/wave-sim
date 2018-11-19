@@ -5,6 +5,14 @@ A simple wave interference simulator.
 You can configure everything from the parameters.json file
 
 Each of the Wave Sources declared in the parameters.json file will have a phase shift of the "delta shift per iteration" times the current step with its next source.
+## Install:
+In order to build, install the dependencies and run make (Ex for Ubuntu/Debian)
+~~~~
+sudo apt install libsfml-dev build-essential git
+git clone https://github.com/belzebalex/wave-sim.git
+cd wave-sim
+make
+~~~~
 
 ## Parameters:
 ~~~~
