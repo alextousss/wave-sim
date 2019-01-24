@@ -6,6 +6,8 @@ You can configure everything from the parameters.json file
 
 Each of the Wave Sources declared in the parameters.json file will have a phase shift of the "delta shift per iteration" times the current step with its next source.
 
+![screenshot](https://i.imgur.com/A0dEVAQ.png)
+
 
 ## Install:
 
